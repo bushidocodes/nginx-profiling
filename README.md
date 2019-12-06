@@ -6,7 +6,7 @@ This is used to assess methods of measuring upstream request time.
 
 To start, run `docker-compose up`
 
-Then use a tool like curl to issue `curl localhost:8080` repeatedly
+Then use a tool like curl to issue `curl localhost:8080` repeatedly to load balance with sumulated load
 
 The resulting logs are bind mounted to `./load-balancer/logs/access.log` on the host.
 
@@ -22,3 +22,5 @@ The resulting logs are bind mounted to `./load-balancer/logs/access.log` on the 
 [06/Dec/2019:21:11:24 +0000] GET / HTTP/1.1 -172.26.0.3:1337 returned 200 in 5.015 seconds
 [06/Dec/2019:21:11:35 +0000] GET / HTTP/1.1 -172.26.0.4:1337 returned 200 in 10.023 seconds
 ```
+
+If you would prefer to loadbalance to NOOP type functions, issue `curl localhost:8080/noop` repeatedly

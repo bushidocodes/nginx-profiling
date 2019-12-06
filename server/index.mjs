@@ -13,6 +13,7 @@ async function main(){
             await sleep(simulatedRuntime);
             res.send('Hello World')
         });
+        app.get('/noop', async (_, res) => res.send('OK'));
         app.listen(port, () => console.log(`Example app listening on port ${port} simulating ${simulatedRuntime}ms!`));
     } catch(err) {
         console.error(err);
