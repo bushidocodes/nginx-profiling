@@ -1,0 +1,27 @@
+version: "3.2"
+services:
+  onesec:
+    build:
+      context: ./server
+    command: "npm start 1000"
+  fivesec:
+    build:
+      context: ./server
+    command: "npm start 5000"
+  tensec:
+    build:
+      context: ./server
+    command: "npm start 10000"
+  loadbalancer:
+    build: ./load-balancer
+    volumes:
+      - type: bind
+        source: ./load-balancer/logs
+        target: /var/log/nginx/logs
+    tty: true
+    links:
+      - onesec
+      - fivesec
+      - tensec
+    ports:
+      - '8080:8080'
