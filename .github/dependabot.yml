@@ -1,14 +1,21 @@
+---
 version: 2
 updates:
-  - package-ecosystem: "docker"
-    directory: "/"
+  - package-ecosystem: docker
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'monthly'
+    open-pull-requests-limit: 5
     cooldown:
-      default-days: 3
-  - package-ecosystem: "github-actions"
-    directory: "/"
+      default-days: 7
+  - package-ecosystem: github-actions
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'monthly'
+    open-pull-requests-limit: 1
+    groups:
+      github-actions:
+        patterns:
+          - '*'
     cooldown:
-      default-days: 3
+      default-days: 7
